@@ -1,0 +1,92 @@
+1) sudo apt install virtualenvwrapper
+2) source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+3) sudo apt install build-essential python3-dev libxslt-dev libzip-dev libldap2-dev libsasl2-dev
+4) mkvirtualenv -p /usr/bin/python3 odoo16-env
+	i) Go to your Version Folder 
+5) pip install -r requirements.txt
+6) sudo apt install python-3 libpq-dev
+7) sudo apt install mlocate
+8) locate virtualenvwrapper.sh
+9) Edit .bashrc File add Some Content at the end of the file
+	export WORKON_HOME=$HOME/.virtualenvs
+	export PROJECT_HOME=$HOME/python3
+	source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+10) workon virtualenv
+
+
+IF YOU CAN FACE ANY LIBRABRY ERROR INSTALL THAT LIBRABRY USING THIS COMMAND PIP INSTALL module_name
+
+######################################## Part -2 ##################################
+
+For First Time Installation postgresql
+1)  sudo apt install wget ca-certificates
+2)  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+3)  sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+4) sudo apt postgresql postgresql-contrib
+
+
+For Checking Port Number
+1) pg_lsclusters
+
+
+How to Create DB?
+
+1) su
+	i) su - postgres
+		i) psql
+			i) CREATE ROLE odoo WITH SUPERUSER CREATEROLE LOGIN ENCRYPTED PASSWORD 'odoo';
+
+			ii) \du => Show Roles 
+			iii) ctrl + d => exit 
+			iv) \l => show db
+
+			1) , i) / sudo -u postgres psql
+
+
+
+####### RUN THE ODOO & MAKE DATABASE #############
+
+i) ./odoo-bin --addons-path=addons -d yash
+
+######## For Changing the Port ###################
+
+i) ./odoo-bin --addons-path=addons -d yash --xmlrpc-port = portno.
+
+
+########### kill the porcess ###########
+
+i)  netstat -pltn
+ii) sudo pkill -9 python/python3
+
+
+############################################## switch to another version From Current Version ##############################
+
+1) check you are in which branch ? git branch
+
+2) git checkout 15.0 <= write the version which version you want need
+
+3) git pull origin 15.0 <= Install 15.0 Packages
+
+4) out one step  cd..
+ 
+5) Create a virtual environment
+
+6) You want to create a role then add postgresl commands
+
+7) Run the odoo & make database
+
+
+
+####################################### How to install different python Version ########################################
+
+1) sudo add-apt-repository ppa:deadsnakes/ppa
+
+2) sudo apt-get install python_version (VersionSpecified)
+
+3) sudo apt install python_version-distutils
+
+4) sudo apt install build-essential python3.7-dev libxslt-dev libzip-dev libldap2-dev libsasl2-dev
+
+5) mkvirtualenv -p /usr/bin/python3.7 odoo16-env
+
+6) .bashrc file add python specified Version
